@@ -1,15 +1,11 @@
 <!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
-<p>Online Calculator</p>
-Enter operand 1: <input type ="text" id="op1"> <br>
+<html> <head> </head> <body bgcolor="#FFE4B5"> <font face = "Arial">
+<center><h3>Online Calculator</h3></center><br>
+Enter operand 1: <input type ="number" id="op1"> <br>
 Choose operator:<input type ="text" id="op"> <br>
-Enter operand 2: <input type ="text"  id="op2"> <br>
+Enter operand 2: <input type ="number"  id="op2"> <br> <br>
 <button onclick="solve()">Solve</button>
-<br>Answer:
-<br><input type ="text" id="ans"> <br>
+<br>Answer :<input type ="number" id="ans">
 <button onclick="reset()">Reset</button>
 <script>
 function solve(){
@@ -18,31 +14,27 @@ function solve(){
     var op = document.getElementById("op").value;
     switch(op){
         case "+":
-            ans = op1+op2;
+            ans = parseFloat(op1)+parseFloat(op2);
             break;
         case "-":
-            ans = op1-op2;
+            ans = parseFloat(op1)-parseFloat(op2);
             break;
         case "*":
-            ans = op1*op2;
+            ans = parseFloat(op1)*parseFloat(op2);
             break;
         case "/":
-            ans = op1/op2;
+            ans = parseFloat(op1)/parseFloat(op2);
             break;
         default:
             alert("Invalid operator");
             break;
-        }
-    
+        }    
     document.getElementById("ans").value = ans;
     document.getElementById("op1").value = ans;
     }
-
 function reset(){
-    document.getElementById("op1").value = 0;
-    document.getElementById("op2").value = 0;
-    document.getElementById("ans").value = 0;
+    document.getElementById("op1").value = "";
+    document.getElementById("op2").value = "";
+    document.getElementById("ans").value = "";
     }
-</script>
-</body>
-</html>
+</script> </body> </html>
