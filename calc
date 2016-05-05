@@ -1,40 +1,36 @@
 <!DOCTYPE html>
-<html> <head> </head> <body bgcolor="#FFE4B5"> <font face = "Arial">
-<center><h3>Online Calculator</h3></center><br>
-Enter operand 1: <input type ="number" id="op1"> <br>
-Choose operator:<input type ="text" id="op"> <br>
-Enter operand 2: <input type ="number"  id="op2"> <br> <br>
-<button onclick="solve()">Solve</button>
-<br>Answer :<input type ="number" id="ans">
-<button onclick="reset()">Reset</button>
+<html> <body bgcolor="#FFE8F3">
+<h2 align="center"><font color="#C70039" face="verdana">2016 <br>Presidential Elections</h2></font><hr>
+<font face="verdana">Who are you going to vote for president?<br><br>
+Presidential Candidates:
+<p id="choices"></p>
+<input type="text" id="vote"><br>
+<button onclick="vote()">Vote</button>
+<p id="note">Please vote wisely!</p></font>
 <script>
-function solve(){
-    var op1 = document.getElementById("op1").value;
-    var op2 = document.getElementById("op2").value;
-    var op = document.getElementById("op").value;
-    switch(op){
-        case "+":
-            ans = parseFloat(op1)+parseFloat(op2);
-            break;
-        case "-":
-            ans = parseFloat(op1)-parseFloat(op2);
-            break;
-        case "*":
-            ans = parseFloat(op1)*parseFloat(op2);
-            break;
-        case "/":
-            ans = parseFloat(op1)/parseFloat(op2);
-            break;
-        default:
-            alert("Invalid operator");
-            break;
-        }    
-    document.getElementById("ans").value = ans;
-    document.getElementById("op1").value = ans;
+var candidate_map = [];
+    function candidate(c_name, c_age, c_note){
+        this.name = c_name;
+        this.age = c_age;
+        this.note = c_note;
     }
-function reset(){
-    document.getElementById("op1").value = "";
-    document.getElementById("op2").value = "";
-    document.getElementById("ans").value = "";
-    }
+    candidate_map[0] = new candidate("Name", "Age", "Note");
+    candidate_map[1] = new candidate("Rodrigo Duterte", 70, "Leadership");
+    candidate_map[2] = new candidate("Grace Poe", 50, "Congratulations, you have chosen a valid candidate.");
+    candidate_map[3] = new candidate("Miriam Santiago", 72, "Intelligence");
+    candidate_map[4] = new candidate("Mar Roxas", 65,"I am sorry but your candidate is blacklisted.");
+    candidate_map[5] = new candidate("Jejomar Binay", 75, "I am sorry but your candidate is blacklisted.");
+for(var j = 1; j<candidate_map.length;j++){
+    document.getElementById("choices").innerHTML += j+" "+candidate_map[j].name + "<br>";}
+
+function vote(){
+    var voted = document.getElementById("vote").value;
+        for(var a=0; a<candidate_map.length; a++){
+        if(candidate_map[a].name.split('').join('').toLowerCase().replace(/\s+/g, '') == voted.split('').join('').toLowerCase().replace(/\s+/g, '')){
+            document.getElementById("note").innerHTML = candidate_map[a].note;
+            alert(candidate_map[a].note);
+            break;
+        }
+     }
+}
 </script> </body> </html>
